@@ -1,0 +1,112 @@
+<h2>Resultados para confirmar</h2>
+<!-- <p class="text-muted">Editable, filterable and sortable table made with <a href="https://github.com/swimlane/ngx-datatable" target="_blank" class="font-weight-bold transition">ngx-datatable</a>.</p> -->
+
+<div class="input-group mb-2">
+    <span class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></span>
+    <input class="form-control" type="text" placeholder="Pesquise aqui o resultado..." (keyup)="updateFilter($event)"/>
+</div>
+
+
+
+<ngx-datatable
+    #table
+    class="material"
+    [headerHeight]="40"
+    [limit]="10"
+    [columnMode]="'force'"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [rows]="rows"
+    
+    [selected]="selected"
+    [selectionType]="'checkbox'"
+    (activate)="onActivate($event)"
+    (select)='onSelect($event)'>
+     <ngx-datatable-column
+        [width]="30"
+        [sortable]="false"
+        [canAutoResize]="false"
+        [draggable]="true"
+        [resizeable]="false"
+        [headerCheckboxable]="true"
+        [checkboxable]="true">
+      </ngx-datatable-column>
+
+
+    <ngx-datatable-column [width]="30">
+      <ng-template ngx-datatable-header-template>
+        <span>Código</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.id}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Time 1</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.timeA}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Gols</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.golsTimeA}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>X</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        X
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Gols</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.golsTimeB}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Time 2</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.timeB}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column [width]="40">
+      <ng-template ngx-datatable-header-template>
+        <span>Confirmar</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <button type="button" (click)="computaResultado(row, 1)" class="btn btn-outline-success w-20p mb-1 mr-1">Confirma</button>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column [width]="40">
+      <ng-template ngx-datatable-header-template>
+        <span>Recusar</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <button type="button" (click)="computaResultado(row, 2)" class="btn btn-outline-danger w-20p mb-1 mr-1">Recusa</button>
+      </ng-template>
+    </ngx-datatable-column>
+
+</ngx-datatable>   
+<div class="input-group mb-12">
+  <button type="button" (click)="computaResultados(1)" class="btn btn-outline-success w-60p mb-1 mr-1">Confirmar resultados selecionados</button>
+  <button type="button" (click)="computaResultados(2)" class="btn btn-outline-danger w-60p mb-1 mr-1">Recusar resultados selecionados</button>
+  </div>

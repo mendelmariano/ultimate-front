@@ -1,0 +1,139 @@
+<h2>Tabela de Classificação</h2>
+<!-- <p class="text-muted">Editable, filterable and sortable table made with <a href="https://github.com/swimlane/ngx-datatable" target="_blank" class="font-weight-bold transition">ngx-datatable</a>.</p> -->
+
+<div class="input-group mb-2">
+    <span class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></span>
+    <input class="form-control" type="text" placeholder="Pesquise aqui o time..." (keyup)="updateFilter($event)"/>
+</div>
+
+
+
+<ngx-datatable
+    #table
+    class="material"
+    [headerHeight]="40"
+    [limit]="30"
+    [columnMode]="'force'"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [rows]="rows"
+    
+    
+    [selected]="selected"
+    [selectionType]="'checkbox'"
+    (activate)="onActivate($event)"
+    (select)='onSelect($event)'>
+     <ngx-datatable-column
+        [width]="30"
+        [sortable]="false"
+        [canAutoResize]="false"
+        [draggable]="true"
+        [resizeable]="false"
+        [headerCheckboxable]="true"
+        [checkboxable]="false">
+      </ngx-datatable-column>
+
+
+    <ngx-datatable-column [width]="80">
+      <ng-template ngx-datatable-header-template>
+        <span>Posição</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.posicao}}º
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column [width]="350">
+      <ng-template ngx-datatable-header-template>
+        <span>Time</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.name}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Jogos</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.jogos}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Pontos</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.pontos}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Saldo de Gols</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.saldo_gols}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Gols Feitos</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.gols_feitos}}
+      </ng-template>
+    </ngx-datatable-column>
+
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Gols Sofridos</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.gols_sofridos}}
+      </ng-template>
+    </ngx-datatable-column>
+
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Vitórias</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.vitorias}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Empates</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.empates}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Derrotas</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.derrotas}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>
+        <span>Aproveitamento</span>
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.aproveitamento}} %
+      </ng-template>
+    </ngx-datatable-column>
+   
+
+</ngx-datatable>   
